@@ -12,11 +12,13 @@ fn check() {
   let assert Ok(bar) = os.get_env("BAR")
   let assert Ok(ops) = os.get_env("OPS")
   let assert Ok(k) = os.get_env("K")
+  let assert Ok(uri) = os.get_env("SOME_HARDURI")
 
   should.equal(test, "FOO")
   should.equal(bar, "BAR")
   should.equal(ops, "ops")
   should.equal(k, "9")
+  should.equal(uri, "db://root:passw@url.nett.dasd.kk/?retryWrites=true&w=majority")
 }
 
 // gleeunit test functions end in `_test`

@@ -1,9 +1,8 @@
-import gleam/io
 import gleam/string
 import gleam/list
+import gleam/result
 import gleam/erlang/file
 import gleam/erlang/os
-
 
 /// Tries to load environment variables from a `.env` file in the current
 /// working directory.
@@ -38,16 +37,20 @@ pub fn config_with(file: String) {
   string.split(env_file, "\n")
   |> list.filter(fn(line) { line != "" })
   |> list.each(fn(line) {
-    case string.split(line, "=") {
-      [key, value] -> {
-        let key = string.trim(key)
-        let value = string.trim(value)
-        os.set_env(key, value)
-      }
-      _ -> {
-        io.println("Invalid line in .env file:")
-        io.println(line)
-      }
-    }
+    // sometimes can be more than one = in the line
+    let splited_line = string.split(line, "=")
+    let key =
+      list.at(splited_line, 0)
+      |> result.unwrap("")
+      |> string.trim()
+
+    // so for those cases we need to join the rest of the line
+    // and split again
+    let value =
+      list.drop(splited_line, 1)
+      |> string.join("=")
+      |> string.trim()
+
+    os.set_env(key, value)
   })
 }
