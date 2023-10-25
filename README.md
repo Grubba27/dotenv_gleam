@@ -1,7 +1,7 @@
 # gleam_dotenv
 
-[![Package Version](https://img.shields.io/hexpm/v/dotenv)](https://hex.pm/packages/dotenv)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/dotenv/)
+[![Package Version](https://img.shields.io/hexpm/v/dotenv)](https://hex.pm/packages/dotenv_gleam)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/dotenv_gleam/)
 
 Similar to [Node](https://www.npmjs.com/package/dotenv) dotenv and [Ruby](https://github.com/bkeepers/dotenv) dotenv
 
@@ -18,11 +18,11 @@ then in your code:
 
 ```gleam
 
-import dotenv
+import dotenv_gleam
 import gleam/erlang/os // do not forget to add gleam_erlang to the project
 
 pub fn main() {
-  dotenv.config() // this should load .env file
+  dotenv_gleam.config() // this should load .env file
 
   let assert Ok(test) = os.get_env("TEST")
   let assert Ok(bar) = os.get_env("BAR")
@@ -32,7 +32,7 @@ pub fn main() {
 // or you can specify the path to the .env file
 
 pub fn main() {
-  dotenv.config_with("path/to/.env") // this should load .env file
+  dotenv_gleam.config_with("path/to/.env") // this should load .env file
 
   let assert Ok(test) = os.get_env("TEST")
   let assert Ok(bar) = os.get_env("BAR")
@@ -40,4 +40,4 @@ pub fn main() {
 
 ```
 
-and its documentation can be found at <https://hexdocs.pm/dotenv>.
+and its documentation can be found at <https://hexdocs.pm/dotenv_gleam>.
