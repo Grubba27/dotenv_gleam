@@ -1,7 +1,7 @@
 import gleeunit
 import gleeunit/should
 import gleam/erlang/os
-import dotenv
+import dotenv_gleam
 
 pub fn main() {
   gleeunit.main()
@@ -21,11 +21,11 @@ fn check() {
 
 // gleeunit test functions end in `_test`
 pub fn should_set_env_from_file_test() {
-  dotenv.config()
+  dotenv_gleam.config()
   check()
 }
 
 pub fn should_set_env_from_file_selected_test() {
-  dotenv.config_with(".env.test")
+  dotenv_gleam.config_with(".env.test")
   check()
 }

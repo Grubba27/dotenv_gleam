@@ -4,6 +4,7 @@ import gleam/list
 import gleam/erlang/file
 import gleam/erlang/os
 
+
 /// Tries to load environment variables from a `.env` file in the current
 /// working directory.
 /// this function calls for assert to make sure that the file is read.
@@ -19,7 +20,6 @@ import gleam/erlang/os
 pub fn config() {
   config_with(".env")
 }
-
 
 /// Tries to load environment variables from a file specified in the current
 /// working directory.
