@@ -9,7 +9,7 @@ import gleam/erlang/os
 /// this function calls for assert to make sure that the file is read.
 /// if for some reason the file is not there will crash the program.
 ///
-/// /// ## Examples
+/// ## Examples
 ///
 /// ```gleam
 /// > config()
