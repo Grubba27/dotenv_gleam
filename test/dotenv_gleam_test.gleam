@@ -8,13 +8,13 @@ pub fn main() {
 }
 
 fn check() {
-  let assert Ok(test) = os.get_env("TEST")
+  let assert Ok(test_) = os.get_env("TEST")
   let assert Ok(bar) = os.get_env("BAR")
   let assert Ok(ops) = os.get_env("OPS")
   let assert Ok(k) = os.get_env("K")
   let assert Ok(uri) = os.get_env("SOME_HARDURI")
 
-  should.equal(test, "FOO")
+  should.equal(test_, "FOO")
   should.equal(bar, "BAR")
   should.equal(ops, "ops")
   should.equal(k, "9")
