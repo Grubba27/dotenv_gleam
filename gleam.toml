@@ -13,8 +13,9 @@ repository = { type = "github", user = "Grubba27", repo = "dotenv_gleam" }
 
 
 [dependencies]
-gleam_stdlib = "~> 0.31"
+gleam_stdlib = "~> 0.36"
 gleam_erlang = "~> 0.22"
+simplifile = "~> 1.1"
 
 [dev-dependencies]
-gleeunit = "~> 0.10"
+gleeunit = "~> 1.0.2"

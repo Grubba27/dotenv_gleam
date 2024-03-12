@@ -1,8 +1,8 @@
 import gleam/string
 import gleam/list
 import gleam/result
-import gleam/erlang/file
 import gleam/erlang/os
+import simplifile
 
 /// Tries to load environment variables from a `.env` file in the current
 /// working directory.
@@ -33,7 +33,7 @@ pub fn config() {
 /// "test"
 /// ```
 pub fn config_with(file: String) {
-  let assert Ok(env_file) = file.read(file)
+  let assert Ok(env_file) = simplifile.read(file)
   string.split(env_file, "\n")
   |> list.filter(fn(line) { line != "" })
   |> list.each(fn(line) {
