@@ -18,7 +18,10 @@ fn check() {
   should.equal(bar, "BAR")
   should.equal(ops, "ops")
   should.equal(k, "9")
-  should.equal(uri, "db://root:passw@url.nett.dasd.kk/?retryWrites=true&w=majority")
+  should.equal(
+    uri,
+    "db://root:passw@url.nett.dasd.kk/?retryWrites=true&w=majority",
+  )
 }
 
 // gleeunit test functions end in `_test`
