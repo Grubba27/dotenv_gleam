@@ -40,7 +40,7 @@ pub fn config_with(file: String) {
     // sometimes can be more than one = in the line
     let splited_line = string.split(line, "=")
     let key =
-      list.at(splited_line, 0)
+      list.first(splited_line)
       |> result.unwrap("")
       |> string.trim()
 
