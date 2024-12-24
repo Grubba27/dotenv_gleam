@@ -1,6 +1,6 @@
 import gleeunit
 import gleeunit/should
-import gleam/erlang/os
+import envoy
 import dotenv_gleam
 
 pub fn main() {
@@ -8,11 +8,11 @@ pub fn main() {
 }
 
 fn check() {
-  let assert Ok(test_) = os.get_env("TEST")
-  let assert Ok(bar) = os.get_env("BAR")
-  let assert Ok(ops) = os.get_env("OPS")
-  let assert Ok(k) = os.get_env("K")
-  let assert Ok(uri) = os.get_env("SOME_HARDURI")
+  let assert Ok(test_) = envoy.get("TEST")
+  let assert Ok(bar) = envoy.get("BAR")
+  let assert Ok(ops) = envoy.get("OPS")
+  let assert Ok(k) = envoy.get("K")
+  let assert Ok(uri) = envoy.get("SOME_HARDURI")
 
   should.equal(test_, "FOO")
   should.equal(bar, "BAR")
