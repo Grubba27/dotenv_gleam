@@ -1,7 +1,7 @@
 import gleam/string
 import gleam/list
 import gleam/result
-import gleam/erlang/os
+import envoy
 import simplifile
 
 /// Tries to load environment variables from a `.env` file in the current
@@ -51,6 +51,6 @@ pub fn config_with(file: String) {
       |> string.join("=")
       |> string.trim()
 
-    os.set_env(key, value)
+    envoy.set(key, value)
   })
 }
