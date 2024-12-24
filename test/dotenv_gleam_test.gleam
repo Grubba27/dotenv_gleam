@@ -1,7 +1,7 @@
+import dotenv_gleam
+import envoy
 import gleeunit
 import gleeunit/should
-import envoy
-import dotenv_gleam
 
 pub fn main() {
   gleeunit.main()

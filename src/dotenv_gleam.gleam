@@ -1,7 +1,7 @@
-import gleam/string
+import envoy
 import gleam/list
 import gleam/result
-import envoy
+import gleam/string
 import simplifile
 
 /// Tries to load environment variables from a `.env` file in the current
