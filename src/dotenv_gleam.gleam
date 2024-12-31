@@ -1,7 +1,7 @@
-import gleam/string
+import envoy
 import gleam/list
 import gleam/result
-import gleam/erlang/os
+import gleam/string
 import simplifile
 
 /// Tries to load environment variables from a `.env` file in the current
@@ -13,7 +13,7 @@ import simplifile
 ///
 /// ```gleam
 /// > config()
-/// > os.get_env("TEST")
+/// > envoy.get("TEST")
 /// "test"
 /// ```
 pub fn config() {
@@ -29,7 +29,7 @@ pub fn config() {
 ///
 /// ```gleam
 /// > config_with("path/to/.env")
-/// > os.get_env("TEST")
+/// > envoy.get("TEST")
 /// "test"
 /// ```
 pub fn config_with(file: String) {
@@ -51,6 +51,6 @@ pub fn config_with(file: String) {
       |> string.join("=")
       |> string.trim()
 
-    os.set_env(key, value)
+    envoy.set(key, value)
   })
 }

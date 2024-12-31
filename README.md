@@ -19,14 +19,13 @@ then in your code:
 ```gleam
 
 import dotenv_gleam
-import gleam/erlang/os // do not forget to add gleam_erlang to the project
+import envoy // do not forget to add envoy to the project
 
 pub fn main() {
   dotenv_gleam.config() // this should load .env file
 
-  let assert Ok(test) = os.get_env("TEST")
-  let assert Ok(bar) = os.get_env("BAR")
-
+  let assert Ok(test) = envoy.get("TEST")
+  let assert Ok(bar) = envoy.get("BAR")
 }
 
 // or you can specify the path to the .env file
@@ -34,8 +33,8 @@ pub fn main() {
 pub fn main() {
   dotenv_gleam.config_with("path/to/.env") // this should load .env file
 
-  let assert Ok(test) = os.get_env("TEST")
-  let assert Ok(bar) = os.get_env("BAR")
+  let assert Ok(test) = envoy.get("TEST")
+  let assert Ok(bar) = envoy.get("BAR")
 }
 
 ```
