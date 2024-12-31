@@ -13,7 +13,7 @@ import simplifile
 ///
 /// ```gleam
 /// > config()
-/// > os.get_env("TEST")
+/// > envoy.get("TEST")
 /// "test"
 /// ```
 pub fn config() {
@@ -29,7 +29,7 @@ pub fn config() {
 ///
 /// ```gleam
 /// > config_with("path/to/.env")
-/// > os.get_env("TEST")
+/// > envoy.get("TEST")
 /// "test"
 /// ```
 pub fn config_with(file: String) {
