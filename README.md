@@ -22,7 +22,7 @@ import dotenv_gleam
 import envoy // do not forget to add envoy to the project
 
 pub fn main() {
-  dotenv_gleam.config() // this should load .env file
+  let assert Ok(Nil) = dotenv_gleam.config() // this should load .env file or return an error if it does not exist
 
   let assert Ok(test) = envoy.get("TEST")
   let assert Ok(bar) = envoy.get("BAR")
@@ -31,7 +31,7 @@ pub fn main() {
 // or you can specify the path to the .env file
 
 pub fn main() {
-  dotenv_gleam.config_with("path/to/.env") // this should load .env file
+  let assert Ok(Nil) = dotenv_gleam.config_with("path/to/.env") // this should load .env file or return an error if it does not exist
 
   let assert Ok(test) = envoy.get("TEST")
   let assert Ok(bar) = envoy.get("BAR")

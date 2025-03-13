@@ -4,17 +4,28 @@ import gleam/result
 import gleam/string
 import simplifile
 
+/// An error that can occur when loading environment variables from a `.env` file.
+pub type DotEnvError {
+  ErrorReadingEnvFile(simplifile.FileError)
+}
+
 /// Tries to load environment variables from a `.env` file in the current
 /// working directory.
-/// this function calls for assert to make sure that the file is read.
-/// if for some reason the file is not there will crash the program.
+/// this function returns a result with the error if it's not possible to read
+/// the file.
 ///
 /// ## Examples
 ///
 /// ```gleam
-/// > config()
+/// > let assert Ok(Nil) = config()
 /// > envoy.get("TEST")
-/// "test"
+/// Ok("test")
+/// ```
+///
+/// ```gleam
+/// > use _ <- result.try(config())
+/// > envoy.get("TEST")
+/// Ok("test")
 /// ```
 pub fn config() {
   config_with(".env")
@@ -22,18 +33,28 @@ pub fn config() {
 
 /// Tries to load environment variables from a file specified in the current
 /// working directory.
-/// this function calls for assert to make sure that the file is read.
-/// if for some reason the file is not there will crash the program.
+/// this function returns a result with the error if it's not possible to read
+/// the file.
 ///
 /// ## Examples
 ///
 /// ```gleam
-/// > config_with("path/to/.env")
+/// > let assert Ok(Nil) = config_with("path/to/.env")
 /// > envoy.get("TEST")
-/// "test"
+/// Ok("test")
 /// ```
-pub fn config_with(file: String) {
-  let assert Ok(env_file) = simplifile.read(file)
+///
+/// ```gleam
+/// > use _ <- result.try(config_with("path/to/.env"))
+/// > envoy.get("TEST")
+/// Ok("test")
+/// ```
+pub fn config_with(file: String) -> Result(Nil, DotEnvError) {
+  use env_file <- result.map(
+    simplifile.read(file)
+    |> result.map_error(ErrorReadingEnvFile),
+  )
+
   string.split(env_file, "\n")
   |> list.filter(fn(line) { line != "" })
   |> list.each(fn(line) {
