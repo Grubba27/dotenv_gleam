@@ -26,11 +26,15 @@ fn check() {
 
 // gleeunit test functions end in `_test`
 pub fn should_set_env_from_file_test() {
-  dotenv_gleam.config()
+  let _ = dotenv_gleam.config()
   check()
 }
 
 pub fn should_set_env_from_file_selected_test() {
-  dotenv_gleam.config_with(".env.test")
+  let _ = dotenv_gleam.config_with(".env.test")
   check()
+}
+
+pub fn should_return_error_when_file_not_found_test() {
+  let assert Error(_) = dotenv_gleam.config_with(".env.notfound")
 }
