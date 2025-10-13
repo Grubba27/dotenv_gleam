@@ -1,22 +1,20 @@
 name = "dotenv_gleam"
-version = "2.0.0"
+version = "2.0.1"
 
 # Fill out these fields if you intend to generate HTML documentation or publish
 # your project to the Hex package manager.
 #
 description = "dotenv for Gleam"
 licences = ["MIT"]
-links = [
-  {title = "gleam", href = "https://gleam.run"}
-]
+links = [{ title = "gleam", href = "https://gleam.run" }]
 repository = { type = "github", user = "Grubba27", repo = "dotenv_gleam" }
 
 
 [dependencies]
 gleam_stdlib = "~> 0.36"
-gleam_erlang = "~> 0.22"
+gleam_erlang = "~> 1.0"
 simplifile = "~> 2.0"
 envoy = "~> 1.0.2"
 
 [dev-dependencies]
-gleeunit = "~> 1.0.2"
+gleeunit = "~> 1.2"
