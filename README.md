@@ -39,4 +39,17 @@ pub fn main() {
 
 ```
 
+If the host environment should win over values in the `.env` file, use the
+preserving variants:
+
+```gleam
+import dotenv_gleam
+
+pub fn main() {
+  let assert Ok(Nil) = dotenv_gleam.config_preserving_env()
+  let assert Ok(Nil) =
+    dotenv_gleam.config_with_preserving_env("path/to/.env")
+}
+```
+
 and its documentation can be found at <https://hexdocs.pm/dotenv_gleam>.
